@@ -1,0 +1,136 @@
+﻿@model FlightTicketApp.Models.Flight
+@{
+    ViewData["Title"] = "Upsert";
+    var title = Model.Id != 0 ? "Edit Flight" : "New Flight";
+    var saveUpdate = Model.Id != 0 ? "Update" : "Save";
+    var dataArr = "";
+    var dataDep = "";
+    if(Model.Id != 0)
+    {
+        dataArr = Model.Arrival_Time.ToShortDateString();
+        dataDep = Model.Departure_Time.ToShortDateString();
+    }
+}
+
+<form method="Post" enctype="multipart/form-data">
+    @if (Model.Id != 0)
+    {
+        <input type="hidden" asp-for="@Model.Id"/>
+    }    
+    <div class="row border">
+        <div class="col-10 border-bottom p-2 m-2">
+            <h1 class="text-primary">@title</h1>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <div class="col-8 p-2">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="file">Picture</label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" id="projectImage" asp-for="Picture" multiple class="form-control"/>
+                    <span asp-validation-for="Picture" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Model"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Model" class="form-control"/>
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Airline_Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Airline_Name" class="form-control" />
+                    <span asp-validation-for="Airline_Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Departure_Time"></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" class="datepickers" value="@dataDep" class="form-control" />
+                    <span asp-validation-for="Departure_Time" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Arrival_Time"></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" class="datepickers" value="@dataArr" class="form-control" />
+                    <span asp-validation-for="Arrival_Time" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Departure_State"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Departure_State" class="form-control" />
+                    <span asp-validation-for="Departure_State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Arrival_State"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Arrival_State" class="form-control" />
+                    <span asp-validation-for="Departure_State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    <button type="submit" class="btn btn-success form-control">
+                        @saveUpdate
+                    </button>
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-info form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                @if(Model.Picture != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.Picture);
+                    var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src="@imgSrc" width="100%"/>
+                }
+                else
+                {
+                    <p>No Image Found !</p>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial"/>
+    <script>
+        $(function () {
+            $(".datapickers").datepicker({
+                changeMonth: true,
+                changeYear: true
+            })
+        })
+    </script>
+}

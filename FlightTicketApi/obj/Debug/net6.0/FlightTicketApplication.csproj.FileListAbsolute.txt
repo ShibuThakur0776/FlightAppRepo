@@ -1,0 +1,9 @@
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.csproj.AssemblyReference.cache
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.AssemblyInfoInputs.cache
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.AssemblyInfo.cs
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.csproj.CoreCompileInputs.cache
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.RazorAssemblyInfo.cache
+C:\Users\acer\Desktop\My Folder\FlightTicketApplication\obj\Debug\net6.0\FlightTicketApplication.RazorAssemblyInfo.cs

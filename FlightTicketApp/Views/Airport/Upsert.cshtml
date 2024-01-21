@@ -1,0 +1,79 @@
+﻿@model FlightTicketApp.Models.ViewModels.AirportVM
+@{
+    ViewData["Title"] = "Upsert";
+    var title = Model.Airport.Id == 0 ? "Edit Airport" : "Create Airport";
+    var saveUpdate = Model.Airport.Id == 0 ? "Update" : "Save";
+}
+
+<form method="post" asp-controller="Airport" asp-action="Upsert">
+    <div class="row border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Airport.Id != 0)
+        {
+            <input type="hidden" asp-for="@Model.Airport.Id" />
+        }
+        <div class="col-8 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8">
+
+            <div class="form-group row p-2 m-2">
+                <div class="col-4">
+                    <label asp-for="@Model.Airport.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="@Model.Airport.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Airport.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row p-2 m-2">
+                <div class="col-4">
+                    <label asp-for="Airport.State"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Airport.State" class="form-control" />
+                    <span asp-validation-for="Airport.State" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row p-2 m-2">
+                <div class="col-4">
+                    <label asp-for="Airport.Airport_Type"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="Airport.Airport_Type" asp-items="Html.GetEnumSelectList<FlightTicketApp.Models.Airport.AirportType>()" class="form-control"></select>
+                    <span asp-validation-for="Airport.Airport_Type" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row p-2 m-2">
+                <div class="col-4">
+                    <label asp-for="Airport.FlightId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => Model.Airport.FlightId, Model.flightList, "Select Flight", new { @class = "form-control" })
+                    <span asp-validation-for="Airport.FlightId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    <button type="submit" class="btn btn-success form-control">
+                        @saveUpdate
+                    </button>
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-info form-control">
+                        Back To List
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
